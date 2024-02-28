@@ -11,28 +11,27 @@ body {
     background-size: cover;
     font-family: Roboto, sans-serif;
 }
-
 nav.controls {
     position: fixed;
     top: 10px;
     left: 10px;
-    
     a:is(:link, :visited) {
-        border: 2px solid #050505;
+        border: 2px solid #fff;
         border-radius: 50%;
         display: flex;
-        padding: 0.4rem;
+        height: 30px;
         opacity: 0.6;
-        height: 40px;
-        width: 40px;
-        transition: all 0.2s ease-in;
+        padding: 0.4rem;
+        transition: all 0.4s ease-in;
+        width: 30px;
+
         &:is(:hover) {
             opacity: 0.8;
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         svg {
-            width: 40px;
+            width: 30px;
         }
     }
 }
@@ -44,8 +43,7 @@ main {
     justify-content: center;
     min-height: 100vh;
 
-    h1,
-    h2 {
+    h1, h2 {
         margin: 0;
     }
 
@@ -61,37 +59,34 @@ main {
 
     menu {
         padding: 0;
-
         ul {
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
             list-style: none;
             padding: 0;
-
             li {
                 border: 2px solid #fff;
-                background-color: rgba(36, 38, 176, 0.533);
+                background-color: #fff4;
                 border-radius: 4rem;
                 width: 300px;
-                transition: all 0.3s ease-in;
-
+                transition: all 0.4s ease-in;
                 &:is(:hover) {
-                    background-color: rgb(47, 150, 235);
-                    transform: scale(1.04);
+                    background-color: #fffa;
+                    transform: scale(1.02);
                 }
-
                 &:is(:hover) a span {
-                    transform: scale(1.1) rotateY(360deg);
+                    background-color: #994bde !important;
+                    transform: scale(1.1) rotate(360deg);
                 }
-
+                
                 a:is(:link, :visited) {
                     display: flex;
                     align-items: center;
-                    padding: 1rem;
+                    padding: 0.6rem;
                     text-decoration: none;
                     gap: 0.6rem;
-                    color: rgb(0, 0, 0);
+                    color: #0009;
 
                     span {
                         background-color: #0009;
