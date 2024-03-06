@@ -11,13 +11,48 @@
             background-color: #0009;
             border-radius: 10px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             gap: 1rem;
             padding: 10px;
 
             h2 {
                 margin: 0;
+                
+            }
+
+            div {
+                display: flex;
+                position: relative;
+                overflow: hidden;
+                justify-content: center;
+
+                span {
+                    color: white;
+                    position: absolute;
+                    bottom: -100px;
+                    background-color: rgba(3, 10, 88, 0.419);
+                    width: 90%;
+                    transition: bottom 0.4s ease-out;
+                    text-align: center;
+                    height: 100px;
+
+                    p {
+
+                        font-size: 10px;
+                    }
+                }
+
+
+            }
+
+            div:hover span {
+                bottom: 15px;
+            }
+
+            div:active span {
+                bottom: 15px;
+                border: 3px white solid;
             }
         }
     </style>
@@ -34,49 +69,64 @@
     <main>
         <h1>04- Inheritance</h1>
         <section>
-           <?php
-                class Pokemon {
-                    // Attributes
-                    protected $name;
-                    protected $type;
-                    protected $healt;
+            <?php
+            class Pokemon
+            {
+                // Attributes
+                protected $name;
+                protected $type;
+                protected $healt;
+                protected $img;
 
-                    // Methods
-                    public function __construct($name, $type, $healt) {
-                        $this->name = $name;
-                        $this->type = $type;
-                        $this->healt = $healt;
-                    }
-
-                    public function attack() {
-                        return "Attack";
-                    }
-                    public function defense() {
-                        return "Defense";
-                    }
-                    public function show() {
-                        return $this->name . " | " . $this->type . " | " . $this->healt;
-                    }
+                // Methods
+                public function __construct($name, $type, $healt, $img)
+                {
+                    $this->name = $name;
+                    $this->type = $type;
+                    $this->healt = $healt;
+                    $this->img = $img;
                 }
 
-                class Evolve extends Pokemon {
-                    public function levelUp($name, $type, $healt) {
-                        $this->name = $name;
-                        $this->type = $type;
-                        $this->healt = $healt;
-                    }
+                public function attack()
+                {
+                    return "Attack";
                 }
+                public function defense()
+                {
+                    return "Defense";
+                }
+                public function show()
+                {
+                    return
+                        '<div>
+                            <img src="' . $this->img . '" alt="pokemon"/>
+                            <span>Stats:
+                                <p>' .
+                                'Name: ' . $this->name . '<br/>' .
+                                'Type: ' . $this->type . '<br/>' .
+                                'Health: ' . $this->healt .
+                                '</p>
+                            </span>
+                        </div>';
+                }
+            }
 
-                $pk = new Evolve('Charmander', 'Fire', 150);
-                echo $pk->attack();
-                echo $pk->defense();
-                echo $pk->show();
-                $pk->levelUp('Charmelon', 'Fire', 250);
-                echo $pk->show();
-                $pk->levelUp('Charizard', 'Fire-Fly', 250);
-                echo $pk->show();
-           ?>
-           <h2>Evolve your Pokemon</h2>
+            class Evolve extends Pokemon
+            {
+                public function levelUp($name, $type, $healt, $img) {
+                
+                parent::__construct($name, $type, $healt, $img); // En la función hijo llamamos exactamente el metodo contructor padre
+
+                }
+            }
+
+            $pk = new Evolve('Charmander', 'Fire', 150, "images/charmander.png");
+            echo $pk->show();
+            $pk->levelUp('Charmelon', 'Fire', 250, "images/charmeleon.png");
+            echo $pk->show();
+            $pk->levelUp('Charizard', 'Fire-Fly', 250, "images/charizard.png");
+            echo $pk->show();
+            ?>
         </section>
     </main>
 </body>

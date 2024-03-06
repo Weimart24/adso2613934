@@ -10,3 +10,5 @@
 |4. Laravel | Framework en PHP |
 
 ![Hollow](http://tinyurl.com/yb2mh8kp)
+
+[Drive Slides PDF](https://drive.google.com/drive/folders/1cUEOsM44rpspMfyWvY_YlnXlIm9uffej?usp=sharing)

@@ -19,6 +19,57 @@
             h2 {
                 margin: 0;
             }
+            div {
+                padding: 20px;
+                width: 100%;
+                height: 600px;
+                overflow: auto;
+                scrollbar-width: none;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+
+                thead {
+                    background-color: rgba(17, 8, 102, 0.236);
+                    text-align: center;
+                    border: 5px solid #0009;
+
+
+                    th {
+                        padding: 30px;
+                        border: 1px solid #0009;
+                        color: white;
+                    }
+                }
+
+                tbody {
+                    tr {
+
+                        th {
+                            color: rgb(175, 224, 253);
+                            padding: 10px;
+                            border: 1px solid #0009;
+
+                            img {
+                                width: 50px;
+
+                            }
+                        }
+
+                    }
+
+                }
+
+                tbody th:nth-child(odd) {
+                    background-color: rgba(255, 192, 203, 0.3);
+                }
+
+                tbody th:nth-child(even) {
+                    background-color: rgba(255, 0, 255, 0.8, 0.5);
+               }
+            }
         }
     </style>
 </head>
@@ -35,40 +86,67 @@
         <h1>05- Abstract</h1>
         <section>
             <?php
-                abstract class Databases {
-                    // Atributes
-                    protected $host;
-                    protected $user;
-                    protected $pass;
-                    protected $dbname;
-                    protected $conx;
+            abstract class DataBase
+            {
+                // Attributes
+                protected $host;
+                protected $user;
+                protected $pass;
+                protected $dbname;
+                protected $conx;
 
-                    // Methods
-                    public function __construct($dbname, $host='localhost', $user='root', $pass='') {
-                        $this->host = $host;
-                        $this->user = $user;
-                        $this->pass = $pass;
-                        $this->dbname = $dbname;
-                    }
-
-                    public function connect() {
-                        try {
-                            $this->conx = new PDO("mysql:host=$this->host; dbname=$this->dbname", $this->user, $this->pass);
-                            if($this->conx) {
-                                echo "☺️";
-                            }
-                        } catch (PDOException $e) {
-                            echo "Error " . $e->getMessage();
-                        }
-                    }
+                // Methods
+                public function __construct(
+                    $dbname,
+                    $host = 'localhost',
+                    $user = 'root',
+                    $pass = ''
+                ) {
+                    $this->host   = $host;
+                    $this->user   = $user;
+                    $this->pass   = $pass;
+                    $this->dbname = $dbname;
                 }
 
-                class Pokemon extends Databases {
-
+                public function connect()
+                {
+                    try {
+                        return $this->conx = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->user, $this->pass); 
+                    } catch (PDOException $e) {
+                        echo "Error: " . $e->getMessage();
+                    }
                 }
+            }
 
-                $db = new Pokemon('adso2613934');
-                $db->connect();
+            class Pokemon extends DataBase
+            {
+            }
+
+            $db = new Pokemon('adso2613934');
+            $connection = $db->connect();
+            $query = "SELECT * FROM pokemons";
+            $results = $connection->query($query);
+            
+            echo "<div>
+            <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Health</th>
+                        <th>Image</th>
+                    </thead>";
+            while ($row = $results->fetch(PDO::FETCH_ASSOC)) {
+                echo "<tbody>
+                    <th>" . $row['id'] . "</th>
+                    <th>" . $row['name'] . "</th>
+                    <th>" . $row['type'] . "</th>
+                    <th>" . $row['health'] . "</th>
+                    <th><img src='images/" . $row["image"] . "' alt='pokemon'/></th>
+                </tbody>";
+            }
+            "</table>
+            echo </div>";
 
             ?>
         </section>
