@@ -1,0 +1,186 @@
+/*---------------------------------*/
+/*-------V A R I A B L E S---------*/
+/*---------------------------------*/
+
+:root {
+    --ff-heading: "Nova Flat", system-ui;
+    --ff-body: "Nova Oval", system-ui;
+
+    --color-primary: #1b9c85;
+    --color-secondary: #4c4c60;
+    --color-tertiary: #ffe194;
+    --color-quaternary: #e8f6ef;
+}
+
+/*---------------------------------------*/
+/*----------P R E L O A D----------------*/
+/*---------------------------------------*/
+body:after {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    z-index: -1;
+    content: url(../images/btn-active.png) url(../images/btn-hover.png);
+}
+
+/*---------------------------------*/
+/*---------G E N E R A L-----------*/
+/*---------------------------------*/
+
+body {
+    background: linear-gradient(#1fb99d 0%, #2a6b60 23%, #291653 52%, #0d0d30 77%);
+    font-family: var(--ff-body);
+    font-weight: 100;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    main {
+        width: 400px;
+        height: 800px;
+        background: url(../images/bg-main.png) no-repeat center;
+        overflow: hidden;
+
+        header {
+            display: flex;
+            justify-content: center;
+            margin-block: 2.4rem;
+        }
+    }
+}
+
+/*---------------------------------*/
+/*------0 1 - W E L C O M E--------*/
+/*---------------------------------*/
+
+main.welcome {
+
+    section.owl-carousel {
+        margin-top: 6.8rem;
+
+        div.owl-item {
+            display: flex;
+            justify-content: center;
+
+            img {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        div.owl-nav {
+            position: relative;
+            top: -180px;
+            display: flex;
+            justify-content: space-between;
+            margin: 0rem;
+
+            button {
+                transition: transform 0.1s ease-in;
+
+                span {
+                    display: flex;
+                    justify-content: space-around;
+                    height: 50px;
+                    width: 50px;
+                    text-indent: -9999px;
+                }
+            }
+
+            button:is(:hover) {
+                background-color: transparent;
+            }
+
+            button.owl-prev {
+                span {
+                    background: url(../images/btn-prev.svg) no-repeat center;
+                }
+            }
+
+            button.owl-prev:hover {
+                transform: scale(1.1) translateX(-4px);
+            }
+
+            button.owl-next {
+                span {
+                    background: url(../images/btn-next.svg) no-repeat center;
+                }
+            }
+
+            button.owl-next:hover {
+                transform: scale(1.1) translateX(4px);
+            }
+        }
+
+        div.owl-dots {
+            position: relative;
+            top: -20px;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        button:is(hover) {
+            transform: scale(2);
+        }
+
+        button.owl-dot {
+            span {
+                background-color: var(--color-secondary);
+                height: 10px;
+                width: 10px;
+            }
+        }
+
+        button.owl-dot.active,
+        button.owl-dot:is(:hover) {
+            span {
+                background-color: var(--color-primary);
+                height: 10px;
+                width: 10px;
+            }
+        }
+    }
+
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a:is(:link, :visit) {
+        background: url("../images/btn.png") no-repeat center;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 6.2rem;
+        transition: all 0.2s ease-in;
+        width: 300px;
+    }
+
+    a:is(:hover) {
+        background: url("../images/btn-hover.png") no-repeat center;
+    }
+
+    a:is(:active) {
+        background: url("../images/btn-active.png") no-repeat center;
+    }
+}
+
+/*----------------------------------------*/
+/*--------0 2 - C A T A L O G U E---------*/
+/*----------------------------------------*/
+
+main.catalogue {
+    section input.input {
+        background: url("../images/catalogue/input.svg") no-repeat center;
+        border: none;
+        width: 274px;
+        height: 47px;
+    }
+}

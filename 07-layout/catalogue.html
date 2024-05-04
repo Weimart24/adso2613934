@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+</head>
+
+<body>
+    <main class="catalogue">
+
+        <header>
+            <a href="" class="btn-back">
+                <img src="images/btn-back.svg" alt="">
+            </a>
+            <img src="" alt="" class="logo-top">
+            <svg class="btn-burguer"></svg>
+        </header>
+
+        <nav class="nav">
+            <img src="" alt="Menu" class="title-menu">
+            <menu>
+                <a href="login.html">
+                    LOGIN
+                </a>
+                <a href="register.html">
+                    REGISTRE
+                </a>
+                <a href="catalogue.html">
+                    CATALOGUE
+                </a>
+            </menu>
+        </nav>
+        <!-- <header>
+            <img src="images/logo-welcome.svg" alt="">
+        </header>
+        <section class="slider owl-carousel owl-theme">
+            <input type="text" class="input">
+        </section>
+        <footer>
+            <a href="" class="btn btn-explore">
+            </a>
+        </footer> -->
+    </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                center: true,
+                loop: true,
+                nav: true,
+                margin: 40,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1.2
+                    }
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
