@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo</title>
+    <title>GameApp - Catalogue</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/master.css">
@@ -14,62 +14,156 @@
 
 <body>
     <main class="catalogue">
-
         <header>
-            <a href="" class="btn-back">
-                <img src="images/btn-back.svg" alt="">
-            </a>
-            <img src="" alt="" class="logo-top">
-            <svg class="btn-burguer"></svg>
+            <img src="images/logo-welcome.svg" alt="logo" class="logo-top">
+
+            <aside class="filter">
+                 <!-- boton de retroceder -->
+                <a href="index.html" class="btn-back">
+                    <img src="images/btn-back.svg" alt="Back">
+                </a>
+
+                <!-- formulario del filtro -->
+                <form action="" method="POST">
+                    <input type="text" placeholder="Search" maxlength="15">
+                </form>
+
+                <!-- icono del menú hamburguesa -->
+                <svg class="btn-burger" viewBox="0 0 100 100" width="100">
+                    <path class="line top"
+                        d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                    <path class="line middle" d="m 70,50 h -40" />
+                    <path class="line bottom"
+                        d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+                </svg>
+            </aside>
         </header>
 
+
+        <!-- ESTO ES EL MENÚ HAMBURGUESA -->
         <nav class="nav">
-            <img src="" alt="Menu" class="title-menu">
             <menu>
                 <a href="login.html">
-                    LOGIN
+                    <img src="images/ico-login.svg" alt="Login">
                 </a>
                 <a href="register.html">
-                    REGISTRE
+                    <img src="images/ico-register.svg" alt="Register">
                 </a>
                 <a href="catalogue.html">
-                    CATALOGUE
+                    <img src="images/ico-catalogue.svg" alt="Catalogue">
                 </a>
             </menu>
         </nav>
-        <!-- <header>
-            <img src="images/logo-welcome.svg" alt="">
-        </header>
-        <section class="slider owl-carousel owl-theme">
-            <input type="text" class="input">
+
+
+        <section class="scroll">
+            <!-- RESTO DEL CONTENIDO -->
+            <article>
+                <h2>
+                    <img src="images/ico-category.svg" alt="Category">
+                    Aventura
+                </h2>
+                <div class="owl-carousel owl-theme">
+                    <figure>
+                        <img src="images/slide-c1-01.png" alt="" class="slide">
+                        <figcaption>nombre del juego</figcaption>
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                    <figure>
+                        <img src="images/slide-c1-02.png" alt="" class="slide">
+                        <figcaption>nombre del juego</figcaption>
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                    <figure>
+                        <img src="images/slide-c1-03.png" alt="" class="slide">tittle Game
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                </div>
+            </article>
+
+            <article>
+                <h2>
+                    <img src="images/ico-category.svg" alt="Category">
+                    Category
+                </h2>
+                <div class="owl-carousel owl-theme">
+                    <figure>
+                        <img src="images/slide-c1-01.png" alt="" class="slide">tittle Game
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                    <figure>
+                        <img src="images/slide-c1-02.png" alt="" class="slide">tittle Game
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                    <figure>
+                        <img src="images/slide-c1-03.png" alt="" class="slide">tittle Game
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                </div>
+            </article>
+
+            <article>
+                <h2>
+                    <img src="images/ico-category.svg" alt="Category">
+                    Category
+                </h2>
+                <div class="owl-carousel owl-theme">
+                    <figure>
+                        <img src="images/slide-c1-04.png" alt="" class="slide">tittle Game
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                    <figure>
+                        <img src="images/slide-c1-05.png" alt="" class="slide">tittle Game
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                    <figure>
+                        <img src="images/slide-c1-03.png" alt="" class="slide">tittle Game
+                        <a href="view.html" class="btn-more">
+                            <img src="images/ico-more.svg" alt="">view
+                        </a>
+                    </figure>
+                </div>
+            </article>
         </section>
-        <footer>
-            <a href="" class="btn btn-explore">
-            </a>
-        </footer> -->
     </main>
+
+    <!-- ANIMACION DEL MENÚ HAMBURGUESA -->
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.owl-carousel').owlCarousel({
-                center: true,
                 loop: true,
+                margin: 0,
                 nav: true,
-                margin: 40,
+                dots: false,
                 responsive: {
                     0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 1.2
+                        items: 2
                     }
                 }
             })
-        });
+            $('header').on('click', '.btn-burger', function () {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            })
+        })
     </script>
 </body>
 
