@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Game</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/master.css">
+</head>
+
+
+<body>
+
+    <main class="view-game">
+        <header>
+            <img src="images/logo-welcome.svg" alt="logo" class="logo-top">
+
+            <aside class="filter">
+                <!-- boton de retroceder -->
+                <a href="index.html" class="btn-back">
+                    <img src="images/btn-back.svg" alt="Back">
+                </a>
+                <h1>Ovni Man</h1>
+                <!-- icono del menú hamburguesa -->
+                <svg class="btn-burger" viewBox="0 0 100 100" width="100">
+                    <path class="line top"
+                        d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                    <path class="line middle" d="m 70,50 h -40" />
+                    <path class="line bottom"
+                        d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+                </svg>
+            </aside>
+        </header>
+        <section>
+            <img src="images/image-game.png" alt="">
+            <article>
+                <div class="row">
+                    <div class="column">
+                        <h4>Category</h4>
+                        <p>Ovni Man</p>
+                    </div>
+                    <div class="column">
+                        <p class="price">$59</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4>Year:</h4>
+                        <p>2019</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <h4>Descripción:</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi sunt accusamus sapiente
+                            dolor earum, nam omnis, cumque explicabo minima reprehenderit eveniet iure inventore.
+                            Aliquam culpa eligendi aliquid illo sit delectus.</p>
+                    </div>
+                </div>
+            </article>
+            <footer>
+                <a href="">
+                    <img src="images/btn-collection.svg" alt="">
+                </a>
+            </footer>
+        </section>
+
+
+        <!-- ESTO ES EL MENÚ HAMBURGUESA -->
+        <nav class="nav">
+            <menu>
+                <a href="login.html">
+                    <img src="images/ico-login.svg" alt="Login">
+                </a>
+                <a href="register.html">
+                    <img src="images/ico-register.svg" alt="Register">
+                </a>
+                <a href="catalogue.html">
+                    <img src="images/ico-catalogue.svg" alt="Catalogue">
+                </a>
+            </menu>
+        </nav>
+    </main>
+
+    <!-- ANIMACION DEL MENÚ HAMBURGUESA -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('header').on('click', '.btn-burger', function () {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            })
+        })
+    </script>
+</body>
+
+</html>

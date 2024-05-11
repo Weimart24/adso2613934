@@ -375,53 +375,49 @@ main.catalogue {
         margin-top: 1.1rem;
 
         aside.filter {
+            margin-top: .6rem;
             display: flex;
             gap: .1rem;
             justify-content: space-around;
             /*Justifica el contenido*/
             align-items: center;
             /*centra verticalmente*/
-                /* centra el input */
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            /* centra el input */
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-                input {
-                    border: none;
-                    /* fondos del input */
-                    background: url(../images/catalogue/bg-filter.svg) no-repeat center,
-                        url(../images/catalogue/ico-filter.svg) no-repeat 225px center;
-                    /*Color de la letra*/
-                    color: var(--color-tertiary);
+            input {
+                border: none;
+                /* fondos del input */
+                background: url(../images/catalogue/bg-filter.svg) no-repeat center,
+                    url(../images/catalogue/ico-filter.svg) no-repeat 225px center;
+                /*Color de la letra*/
+                color: var(--color-tertiary);
 
-                    /* estios del input */
-                    font-family: var(--ff-heading);
-                    font-weight: 400;
-                    font-size: 25px;
-                    height: 70px;
-                    outline: none;
-                    text-indent: 18px;
-                    width: 274px;
+                /* estios del input */
+                font-family: var(--ff-heading);
+                font-weight: 400;
+                font-size: 25px;
+                height: 70px;
+                outline: none;
+                text-indent: 18px;
+                width: 274px;
 
-                    /* estilos del placeholder */
-                    &::placeholder {
-                        opacity: .5;
-                        color: var(--color-tertiary)
-                    }
+                /* estilos del placeholder */
+                &::placeholder {
+                    opacity: .5;
+                    color: var(--color-tertiary)
                 }
             }
 
             a {
-                border: 1px solid;
-                box-sizing: border-box; 
-                width: 100px;
+                box-sizing: border-box;
+                width: 75px;
+
                 img {
-                    padding: .5rem;  
+                    padding: .5rem;
                 }
-            }
-            svg.btn-burger {
-                border: 1px solid;
-                box-sizing: border-box !important;
             }
 
             a.btn-back:is(:link, :visited) {
@@ -430,7 +426,141 @@ main.catalogue {
 
             a.btn-back:is(:hover) {
                 transform: translateX(-4px)
-            }}
+            }
+        }
+
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 400px;
+
+            article {
+                h2 {
+                    display: flex;
+                    justify-content: center;
+                    font-family: var(--ff-heading);
+                    align-items: center;
+                    color: var(--color-primary);
+                    margin-bottom: 1rem;
+                    gap: .6rem;
+                }
+
+                figure {
+                    figcaption {
+                        color: var(--color-primary);
+                        font-weight: 400;
+                        margin-block: .6rem;
+                        font-size: 16px;
+
+                    }
+                }
+
+                /* Ojo yo creo que no tengo un icono */
+                /* a:is(:link :visited) {
+                    color: var(--color-secondary);
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    font-weight: 300px;
+                    justify-content: center;
+                    text-decoration: none;
+                    width: 120px;
+
+                    omg {
+                        width: 18px;
+                    }
+                } */
+            }
+
+            div.owl-carousel {
+                div.owl-item {
+                    display: flex;
+                    justify-content: center;
+
+                    img,
+                    slide {
+                        width: 120px;
+                        height: 120px;
+                    }
+                }
+
+                div.owl-nav {
+                    position: relative;
+                    top: -190px;
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 0rem;
+
+                    button {
+                        transition: transform 0.1s ease-in;
+
+                        span {
+                            display: flex;
+                            justify-content: space-between;
+                            height: 50px;
+                            width: 50px;
+                            text-indent: -9999px;
+                        }
+                    }
+
+                    button.owl-prev {
+                        span {
+                            background: url(../images/btn-prev.svg) no-repeat center;
+                        }
+                    }
+
+                    button.owl-prev:hover {
+                        transform: scale(1.1) translateX(-4px);
+                    }
+
+                    button.owl-next {
+                        span {
+                            background: url(../images/btn-next.svg) no-repeat center;
+                        }
+                    }
+
+                    button.owl-next:hover {
+                        transform: scale(1.1) translateX(4px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*----------------------------------------*/
+/*-------0 3 - V I E W  G A M E N---------*/
+/*----------------------------------------*/
+
+main.view-game {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1.1rem;
+        border: 2px solid red;
+
+        aside.filter {
+            display: flex;
+            gap: 3rem;
+            justify-content: space-between;
+            /*Justifica el contenido*/
+            align-items: center;
+            /*centra verticalmente*/
+            /* centra el input */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            a.btn-back:is(:link, :visited) {
+                transition: transform 0.2s ease-in;
+            }
+
+            a.btn-back:is(:hover) {
+                transform: translateX(-4px)
+            }
         }
 
         section.scroll {
@@ -438,98 +568,48 @@ main.catalogue {
             overflow-y: scroll;
             height: 400px;
         }
+    }
+
+
+    section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
 
         article {
-            h2 {
-                display: flex;
-                justify-content: center;
-                font-family: var(--ff-heading);
-                align-items: center;
-                color: var(--color-primary);
-                margin-bottom: 1rem;
-                gap: .6rem;
-            }
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 296px;
 
-            figure {
-                figcaption {
-                    color: var(--color-primary);
-                    font-weight: 400;
-                    margin-block: .6rem;
-                    font-size: 16px;
-
-                }
-            }
-
-            /* Ojo yo creo que no tengo un icono */
-            a:is(:link :visited) {
-                color: var(--color-secondary);
-                height: 30px;
-                display: flex;
-                align-items: center;
-                font-size: 16px;
-                font-weight: 300px;
-                justify-content: center;
-                text-decoration: none;
-                width: 120px;
-
-                omg {
-                    width: 18px;
-                }
-            }
-        }
-
-        div.owl-carousel {
-            div.owl-item {
-                display: flex;
-                justify-content: center;
-
-                img,
-                slide {
-                    width: 120px;
-                    height: 120px;
-                }
-            }
-
-            div.owl-nav {
-                position: relative;
-                top: -190px;
+            div.row {
                 display: flex;
                 justify-content: space-between;
-                margin: 0rem;
 
-                button {
-                    transition: transform 0.1s ease-in;
-
-                    span {
-                        display: flex;
-                        justify-content: space-between;
-                        height: 50px;
-                        width: 50px;
-                        text-indent: -9999px;
+                div.column {
+                    h4 {
+                        font-family: var(--ff-heading);
+                        color: var(--color-primary);
+                        font-size: 20px;
                     }
-                }
 
-                button.owl-prev {
-                    span {
-                        background: url(../images/btn-prev.svg) no-repeat center;
+                    p {
+                        font-family: var(--ff-body);
+                        color: var(--color-tertiary);
+                        font-size: 16px;
+                        line-height: 1.4rem;
+                        text-align: justify;
+
+                        &.price {
+                            color: var(--color-tertiary);
+                            font-weight: 400;
+                            font-size: 36px;
+                        }
                     }
-                }
-
-                button.owl-prev:hover {
-                    transform: scale(1.1) translateX(-4px);
-                }
-
-                button.owl-next {
-                    span {
-                        background: url(../images/btn-next.svg) no-repeat center;
-                    }
-                }
-
-                button.owl-next:hover {
-                    transform: scale(1.1) translateX(4px);
                 }
             }
         }
     }
-}
 }
