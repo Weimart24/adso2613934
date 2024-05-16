@@ -428,35 +428,35 @@ main.catalogue {
                 transform: translateX(-4px)
             }
         }
+    }
 
-        section.scroll {
-            scrollbar-width: none;
-            overflow-y: scroll;
-            height: 400px;
+    section.scroll {
+        scrollbar-width: none;
+        overflow-y: scroll;
+        height: 600px;
 
-            article {
-                h2 {
-                    display: flex;
-                    justify-content: center;
-                    font-family: var(--ff-heading);
-                    align-items: center;
-                    color: var(--color-primary);
-                    margin-bottom: 1rem;
-                    gap: .6rem;
+        article {
+            h2 {
+                display: flex;
+                font-family: var(--ff-heading);
+                font-weight: 100;
+                font-size: 30px;
+                color: var(--color-tertiary);
+                margin-bottom: .4rem;
+                margin-left: 2rem;
+            }
+
+            figure {
+                figcaption {
+                    color: var(--color-tertiary);
+                    font-weight: 400;
+                    margin-block: .6rem;
+                    font-size: 16px;
                 }
+            }
 
-                figure {
-                    figcaption {
-                        color: var(--color-primary);
-                        font-weight: 400;
-                        margin-block: .6rem;
-                        font-size: 16px;
-
-                    }
-                }
-
-                /* Ojo yo creo que no tengo un icono */
-                /* a:is(:link :visited) {
+            /* Ojo yo creo que no tengo un icono */
+            /* a:is(:link :visited) {
                     color: var(--color-secondary);
                     height: 30px;
                     display: flex;
@@ -471,58 +471,58 @@ main.catalogue {
                         width: 18px;
                     }
                 } */
+        }
+
+        div.owl-carousel {
+            border: 2px solid;
+            div.owl-item {
+                display: flex;
+                justify-content: center;
+
+                img,
+                slide {
+                    width: 141px;
+                    height: 125px;
+                }
             }
 
-            div.owl-carousel {
-                div.owl-item {
-                    display: flex;
-                    justify-content: center;
+            div.owl-nav {
+                position: relative;
+                top: -130px;
+                display: flex;
+                justify-content: space-between;
+                margin: 0rem;
 
-                    img,
-                    slide {
-                        width: 120px;
-                        height: 120px;
+                button {
+                    transition: transform 0.1s ease-in;
+
+                    span {
+                        display: flex;
+                        justify-content: space-between;
+                        height: 50px;
+                        width: 50px;
+                        text-indent: -9999px;
                     }
                 }
 
-                div.owl-nav {
-                    position: relative;
-                    top: -190px;
-                    display: flex;
-                    justify-content: space-between;
-                    margin: 0rem;
-
-                    button {
-                        transition: transform 0.1s ease-in;
-
-                        span {
-                            display: flex;
-                            justify-content: space-between;
-                            height: 50px;
-                            width: 50px;
-                            text-indent: -9999px;
-                        }
+                button.owl-prev {
+                    span {
+                        background: url(../images/btn-prev.svg) no-repeat center;
                     }
+                }
 
-                    button.owl-prev {
-                        span {
-                            background: url(../images/btn-prev.svg) no-repeat center;
-                        }
-                    }
+                button.owl-prev:hover {
+                    transform: scale(1.1) translateX(-4px);
+                }
 
-                    button.owl-prev:hover {
-                        transform: scale(1.1) translateX(-4px);
+                button.owl-next {
+                    span {
+                        background: url(../images/btn-next.svg) no-repeat center;
                     }
+                }
 
-                    button.owl-next {
-                        span {
-                            background: url(../images/btn-next.svg) no-repeat center;
-                        }
-                    }
-
-                    button.owl-next:hover {
-                        transform: scale(1.1) translateX(4px);
-                    }
+                button.owl-next:hover {
+                    transform: scale(1.1) translateX(4px);
                 }
             }
         }
