@@ -47,7 +47,7 @@ body {
         header {
             display: flex;
             justify-content: center;
-            margin-block: 3.2rem;
+            margin-block: 2rem;
             z-index: 3;
             position: relative;
 
@@ -232,6 +232,12 @@ body {
             }
         }
 
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 600px;
+        }
+
     }
 }
 
@@ -240,7 +246,6 @@ body {
 /*---------------------------------*/
 
 main.welcome {
-
     section.owl-carousel {
         margin-top: 6.8rem;
 
@@ -431,18 +436,17 @@ main.catalogue {
     }
 
     section.scroll {
-        scrollbar-width: none;
-        overflow-y: scroll;
-        height: 600px;
-
         article {
+            display: flex;
+            flex-direction: column;
+            
             h2 {
                 display: flex;
                 font-family: var(--ff-heading);
                 font-weight: 100;
                 font-size: 30px;
                 color: var(--color-tertiary);
-                margin-bottom: .4rem;
+                margin-bottom: .8rem;
                 margin-left: 2rem;
             }
 
@@ -474,8 +478,9 @@ main.catalogue {
         }
 
         div.owl-carousel {
-            border: 2px solid;
-
+            width: 90%;
+            left: 20px;
+            margin-bottom: 2rem;
             div.owl-item {
                 display: flex;
                 justify-content: center;
@@ -484,22 +489,22 @@ main.catalogue {
                 slide {
                     width: 141px;
                     height: 125px;
+                    left: 2rem;
                 }
             }
 
             div.owl-nav {
                 position: relative;
-                top: -130px;
+                top: -108px;
                 display: flex;
                 justify-content: space-between;
-                margin: 0rem;
+                margin: -1.3rem;
 
                 button {
                     transition: transform 0.1s ease-in;
 
                     span {
                         display: flex;
-                        justify-content: space-between;
                         height: 50px;
                         width: 50px;
                         text-indent: -9999px;
@@ -656,10 +661,6 @@ main.registre {
     }
 
     section.scroll {
-        scrollbar-width: none;
-        overflow-y: scroll;
-        height: 800px;
-
         form {
             display: flex;
             flex-direction: column;
@@ -708,6 +709,29 @@ main.registre {
                     left: 278px;
                     cursor: pointer;
                 }
+
+                img.mask {
+                    mask-image: url(../images/loginRegistre/mask-profile.svg);
+                    mask-repeat: no-repeat;
+                    mask-position: center top;
+                    object-fit: cover;
+                    align-self: center;
+                    height: 200px;
+                    width: 200px;
+                }
+
+                img.border-mask {
+                    position: absolute;
+                    left: 92px;
+                }
+
+                .border-mask {
+                    cursor: pointer;
+                }
+
+                #photo {
+                    display: none;
+                }
             }
 
             button {
@@ -732,4 +756,5 @@ main.registre {
             }
         }
     }
+}
 }

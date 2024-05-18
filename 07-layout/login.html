@@ -21,7 +21,6 @@
                     <img src="images/btn-back.svg" alt="Back">
                 </a>
 
-                <!-- formulario del filtro -->
                 <img src="images/loginRegistre/icon-login.png" alt="">
 
                 <!-- icono del menú hamburguesa -->
@@ -71,7 +70,7 @@
                         Contraseña
                     </label>
                     <img class="ico-eye" src="images/loginRegistre/icon-eye.svg" alt="Eyes">
-                    <input type="password" name="password" placeholder="**********">
+                    <input type="password" name="password" placeholder="∗∗∗∗∗∗∗∗∗∗∗∗∗∗">
                 </div>
                 <div class="form-group">
                     <p>Si no tienes una contraseña <a href="">registrese aquí</a></p>
@@ -110,10 +109,10 @@
         $togglePass = false;
         $('section').on('click', '.ico-eye', function () {
             !$togglePass ? $(this).next().attr('type', 'text')
-                         : $(this).next().attr('type', 'password')
+                : $(this).next().attr('type', 'password')
 
             !$togglePass ? $(this).attr('src', 'images/loginRegistre/icon-eye-close.svg')
-                         : $(this).attr('src', 'images/loginRegistre/icon-eye.svg')
+                : $(this).attr('src', 'images/loginRegistre/icon-eye.svg')
             $togglePass = !$togglePass
         })
     })
