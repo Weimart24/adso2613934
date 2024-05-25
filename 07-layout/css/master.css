@@ -44,25 +44,27 @@ body {
         height: 800px;
         background: url(../images/bg-main.png) no-repeat center;
         position: absolute;
+        overflow: hidden;
 
         header {
             display: flex;
             justify-content: center;
-            margin-block: 2rem;
+            margin-block: 1rem;
             position: relative;
+
             /* Esto es solo para mostrar el logotipo del la app*/
             img.logo-top {
                 z-index: 3;
             }
 
             aside.filter {
-                
                 svg.btn-burger {
                     z-index: 3;
                     cursor: pointer;
                     transition: transform 400ms;
                     user-select: none;
                     position: relative;
+                    transition: all 0.2s ease-in;
 
                     .line {
                         fill: none;
@@ -80,6 +82,10 @@ body {
                     .bottom {
                         stroke-dasharray: 40 121;
                     }
+                }
+
+                svg.btn-burger:is(:hover) {
+                    transform: scale(1.1);
                 }
 
                 svg.btn-burger.active {
@@ -108,6 +114,7 @@ body {
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
+            border-radius: 20px;
             height: 800px;
             top: 0;
             transform: translateY(-61%) scale(0);
@@ -130,14 +137,15 @@ body {
             flex-direction: column;
             align-items: center;
             margin-top: 10rem;
+
             a:is(:link, :visited) {
                 margin-top: 3rem;
                 transition: all 0.3s ease-in;
                 width: 300px;
             }
+
             img.social {
                 margin-top: 70px;
-            }
             }
 
             a:is(:hover) {
@@ -231,6 +239,7 @@ body {
         }
 
     }
+}
 
 /*---------------------------------*/
 /*------0 1 - W E L C O M E--------*/
@@ -363,7 +372,7 @@ main.catalogue {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 1.1rem;
+        margin-top: 0.8rem;
     }
 
     aside.filter {
@@ -378,7 +387,7 @@ main.catalogue {
             border: none;
             /* fondos del input */
             background: url(../images/catalogue/bg-filter.svg) no-repeat center,
-                        url(../images/catalogue/icon-filter.svg) no-repeat 212px center;
+                url(../images/catalogue/icon-filter.svg) no-repeat 212px center;
             /*Color de la letra*/
             color: var(--color-letter);
 
@@ -411,7 +420,7 @@ main.catalogue {
         }
 
         a.btn-back:is(:hover) {
-            transform: translateX(-4px)
+            transform: translateX(-4px);
         }
     }
 
@@ -432,10 +441,19 @@ main.catalogue {
 
             figure {
                 figcaption {
+                    display: flex;
+                    justify-content: center;
+                    box-shadow: 1px 1px 9px var(--color-tertiary);
+                    border-radius: 6px;
                     color: var(--color-letter);
                     font-weight: 400;
                     margin-block: .6rem;
                     font-size: 16px;
+                    transition: all 0.2s ease-in;
+                }
+
+                figcaption:is(:hover) {
+                    transform: scale(1.2) translateY(-1px);
                 }
             }
         }
@@ -454,6 +472,11 @@ main.catalogue {
                     width: 141px;
                     height: 125px;
                     left: 2rem;
+                }
+
+                figure a {
+                    text-decoration: none;
+                    color: inherit;
                 }
             }
 
@@ -508,21 +531,36 @@ main.view-game {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 1.1rem;
-        border: 2px solid red;
+        margin-top: 1rem;
 
         aside.filter {
+
             display: flex;
-            gap: 3rem;
             justify-content: space-between;
-            /*Justifica el contenido*/
             align-items: center;
-            /*centra verticalmente*/
-            /* centra el input */
             display: flex;
             justify-content: center;
             align-items: center;
 
+            h1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: var(--color-letter);
+                font-family: var(--ff-heading);
+                font-weight: 300;
+                font-size: 40px;
+                width: 250px;
+                height: 75px;
+            }
+
+            a {
+                height: 75px;
+                width: 75px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
             a.btn-back:is(:link, :visited) {
                 transition: transform 0.2s ease-in;
@@ -530,6 +568,11 @@ main.view-game {
 
             a.btn-back:is(:hover) {
                 transform: translateX(-4px)
+            }
+
+            svg.btn-burger {
+                visibility: hidden;
+                pointer-events: none;
             }
         }
 
@@ -596,6 +639,7 @@ main.registre {
                 visibility: hidden;
                 pointer-events: none;
             }
+
             div.img {
                 display: flex;
                 justify-content: center;
@@ -604,6 +648,14 @@ main.registre {
                 height: 75px;
             }
         }
+    }
+
+    section.higth-registre {
+        margin-top: -1rem;
+    }
+
+    section.higth-login {
+        margin-top: 5rem;
     }
 
     section.scroll {
@@ -638,7 +690,7 @@ main.registre {
                     font-size: 20px;
                     font-family: var(--ff-body);
                     color: var(--color-tertiary);
-                    font-weight: 300;
+                    font-weight: 100;
                     text-indent: 1rem;
                     width: 312px;
                     height: 38px;
@@ -655,20 +707,23 @@ main.registre {
                     left: 278px;
                     cursor: pointer;
                 }
+
                 p.accounts {
                     font-family: var(--ff-heading);
                     color: #908f8f;
-                    a {
-                      text-decoration: none;
-                      color: blue;
-                      transition: all 0.2s ease-in;
-                    }
+                }
 
-                    a:is(:hover) {
-                        color: #0ea88c;
-                        font-size: 16.5px;
-                        font-weight: 600;
-                    }
+                a:link,
+                a:visited {
+                    text-decoration: none;
+                    color: blue;
+                    transition: all 0.2s ease-in;
+                }
+
+                a:is(:hover) {
+                    color: #0ea88c;
+                    font-size: 16.5px;
+                    font-weight: 600;
                 }
 
                 img.mask {
@@ -677,8 +732,8 @@ main.registre {
                     mask-position: center top;
                     object-fit: cover;
                     align-self: center;
-                    height: 200px;
-                    width: 200px;
+                    height: 170px;
+                    width: 170px;
                 }
 
                 img.border-mask {
@@ -703,7 +758,7 @@ main.registre {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-top: 6.2rem;
+                margin-top: 3rem;
                 transition: all 0.2s ease-in;
                 width: 312px;
             }
@@ -718,3 +773,107 @@ main.registre {
         }
     }
 }
+
+
+/*----------------------------------------*/
+/*---------0 5 - W E L C O M E------------*/
+/*----------------------------------------*/
+
+main.welcome {
+    header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 11rem;
+
+        img.mask {
+            position: absolute;
+            mask-image: url(../images/loginRegistre/mask-profile.svg);
+            mask-repeat: no-repeat;
+            right: 15px;
+            border-radius: 20px;
+            object-fit: cover;
+            align-self: center;
+            height: 131px;
+            width: 98px;
+        }
+
+        img.border-mask {
+            position: absolute;
+            left: 287px;
+            width: 100px;
+            height: 133px;
+        }
+
+        div.title-name {
+            img {
+                position: absolute;
+                left: 12px;
+            }
+
+            h2 {
+                position: absolute;
+                top: 75px;
+                left: 84px;
+                font-family: var(--ff-body);
+                font-size: 30px;
+                font-weight: 100;
+                color: #272727;
+            }
+        }
+    }
+
+    section.content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        div.modules {
+            background: url(../images/welcome/box.png) no-repeat center;
+            width: 300px;
+            height: 125px;
+
+            display: flex;
+            gap: 0.4rem;
+
+            figure {
+                width: 100px;
+                height: 125px;
+                margin-left: 10px;
+                margin-top: 15px;
+
+                figcaption {
+                    font-family: var(--ff-body);
+                    font-size: 14px;
+                    color: #282828;
+                    margin-top: 11px;
+                }
+            }
+            aside.text {
+                display: flex;
+                flex-direction: column;
+                margin-right: 4px;
+                margin-top: 8px;
+                gap: 0.5rem;
+             
+                a {
+                    margin-left: 120px;
+                }
+            }
+        }
+    }
+    footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 121px;
+        height: 31px;
+        background-color: var(--color-primary);
+        p {
+            color: #e8f6ef;
+        }
+    }
+}
+
+
+
+/* lo haces muy bien, te felicito :3 */
