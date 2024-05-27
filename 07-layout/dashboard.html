@@ -11,16 +11,18 @@
 </head>
 
 <body>
-    <main class="welcome">
+    <main class="dashboard">
         <header>
             <div class="title-name">
-                <img src="images/welcome/content-welcome.svg" alt="">
+                <img class="title-content" src="images/welcome/content-welcome.svg" alt="">
                 <h2>Juan Pérez</h2>
             </div>
 
             <div class="img-profile">
-                <img class="mask" src="images/loginRegistre/bg-upload-photo.png" alt="Photo">
-                <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
+                <a href="edit-admin.html">
+                    <img class="mask" src="images/loginRegistre/bg-upload-photo.webp" alt="Photo">
+                    <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
+                </a>
             </div>
         </header>
 
@@ -36,7 +38,7 @@
                     <p class="info-text">
                         Lorem ipsum dolor, sit amet consectetur.
                     </p>
-                    <a href="">
+                    <a href="user.html">
                         <img src="images/welcome/button-view.svg" alt="" class="view">
                     </a>
                 </aside>
@@ -51,7 +53,7 @@
                     <p class="info-text">
                         Lorem ipsum dolor, sit amet consectetur.
                     </p>
-                    <a href="">
+                    <a href="game.html">
                         <img src="images/welcome/button-view.svg" alt="" class="view">
                     </a>
                 </aside>
@@ -61,20 +63,23 @@
                     <img src="images/welcome/icon-category.svg" alt=""">
                     <figcaption>28 categories</figcaption>
                 </figure>
-                <aside class="text">
+                <aside class=" text">
                     <img src="images/welcome/module-categories.svg" alt="" width="192px" height="38px">
                     <p class="info-text">
                         Lorem ipsum dolor, sit amet consectetur.
                     </p>
-                    <a href="">
+                    <a href="category.html">
                         <img src="images/welcome/button-view.svg" alt="" class="view">
                     </a>
-                </aside>
+                    </aside>
             </div>
         </section>
-        <footer>
+
+        <footer class="navigation">
             <p>Admin</p>
+            <a href="index.html">
                 <img src="images/welcome/btn-logout.svg" alt="" class="logout">
+            </a>
         </footer>
     </main>
 </body>

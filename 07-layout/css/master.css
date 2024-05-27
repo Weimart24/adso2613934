@@ -333,33 +333,31 @@ main.welcome {
         }
     }
 
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    a:is(:link, :visit) {
-        background: url("../images/btn.png") no-repeat center;
-        height: 60px;
+    footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 6.2rem;
-        transition: all 0.2s ease-in;
-        width: 300px;
-    }
 
-    a:is(:hover) {
-        background: url("../images/btn-hover.png") no-repeat center;
-    }
+        a:is(:link, :visit) {
+            background: url("../images/btn.png") no-repeat center;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5rem;
+            transition: all 0.2s ease-in;
+            width: 300px;
+        }
 
-    a:is(:active) {
-        background: url("../images/btn-active.png") no-repeat center;
+        a:is(:hover) {
+            background: url("../images/btn-hover.png") no-repeat center;
+        }
+
+        a:is(:active) {
+            background: url("../images/btn-active.png") no-repeat center;
+        }
     }
 }
-
 
 
 /*----------------------------------------*/
@@ -624,6 +622,31 @@ main.view-game {
                 }
             }
         }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            a:is(:link, :visit) {
+                background: url("../images/btn.png") no-repeat center;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 3rem;
+                transition: all 0.2s ease-in;
+                width: 300px;
+            }
+
+            a:is(:hover) {
+                background: url("../images/btn-hover.png") no-repeat center;
+            }
+
+            a:is(:active) {
+                background: url("../images/btn-active.png") no-repeat center;
+            }
+        }
     }
 }
 
@@ -776,10 +799,15 @@ main.registre {
 
 
 /*----------------------------------------*/
-/*---------0 5 - W E L C O M E------------*/
+/*--------0 5 - D A S H B O A R D---------*/
 /*----------------------------------------*/
 
-main.welcome {
+main.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
     header {
         display: flex;
         justify-content: space-between;
@@ -805,7 +833,7 @@ main.welcome {
         }
 
         div.title-name {
-            img {
+            img.title-content {
                 position: absolute;
                 left: 12px;
             }
@@ -826,6 +854,7 @@ main.welcome {
         display: flex;
         align-items: center;
         flex-direction: column;
+        margin-bottom: 120px;
         gap: 2.5rem;
 
         div.modules {
@@ -849,31 +878,151 @@ main.welcome {
                     margin-top: 11px;
                 }
             }
+
             aside.text {
                 display: flex;
                 flex-direction: column;
                 margin-right: 4px;
                 margin-top: 8px;
                 gap: 0.5rem;
-             
+
                 a {
                     margin-left: 120px;
                 }
             }
         }
     }
-    footer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 121px;
+
+    footer.navigation {
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
         height: 31px;
         background-color: var(--color-primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
         p {
-            color: #e8f6ef;
+            color: var(--color-quaternary);
+            font-family: var(--ff-heading);
+            font-size: 20px;
         }
     }
 }
 
 
+/*----------------------------------------*/
+/*-------------0 4 - U S E R--------------*/
+/*----------------------------------------*/
+
+main.user {
+    header {
+        div.title-name {
+            a.add-icon {
+                position: absolute;
+                top: 70px;
+                left: 20px;
+            }
+        }
+    }
+
+    section.content-profile {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 30px;
+        gap: 2.5rem;
+
+        scrollbar-width: none;
+        overflow-y: scroll;
+
+
+        div.modules {
+            display: flex;
+            gap: 0.8rem;
+
+            div.info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+
+            div.individual-module {
+                display: flex;
+                position: relative;
+                background: url(../images/welcome/box.png) no-repeat center;
+                width: 300px;
+                height: 125px;
+
+                figure {
+                    display: flex;
+                    justify-content: center;
+                    width: 85px;
+                    height: 125px;
+
+                    img.mask {
+                        /* mask-image: url(../images/loginRegistre/mask-profile.svg);
+                    mask-repeat: no-repeat; */
+                        border-radius: 10px;
+                        object-fit: cover;
+                        align-self: center;
+                        width: 74px;
+                        height: 100px;
+                    }
+
+                    img.border-mask {
+                        position: absolute;
+                        left: 5px;
+                        top: 12px;
+                        width: 75px;
+                        height: 101px;
+                    }
+                }
+
+                aside.info {
+                    width: 215px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    div.titulos {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.7rem;
+
+                        font-family: var(--ff-heading);
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+
+                    div.contenido {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.7rem;
+
+                        font-family: var(--ff-body);
+                        font-size: 14px;
+                        font-weight: 300;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*----------------------------------------*/
+/*-------------0 4 - E D I T--------------*/
+/*----------------------------------------*/
+
+main.user-edit {
+    header {
+        display: flex;
+        justify-content: center;
+        margin-bottom: -50px;
+    }
+}
 
 /* lo haces muy bien, te felicito :3 */

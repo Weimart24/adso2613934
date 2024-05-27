@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameApp - Catalogue</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/master.css">
+</head>
+
+<body>
+    <main class="dashboard registre user-edit">
+        <header>
+            <img class="title-content" src="images/welcome/users/add-game.svg" alt="">
+        </header>
+
+        <section class="scroll">
+            <form action="game.html">
+                <div class="form-group">
+                    <img id="upload" class="mask" src="images/welcome/users/add-icon.svg" alt="Photo">
+                    <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
+                    <input id="photo" type="file" name="photo" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="">
+                        <img src="" alt="">
+                        Id
+                    </label>
+                    <input type="number" name="id" placeholder="123456789   " maxlength="12">
+                </div>
+                <div class="form-group">
+                    <label for="">
+                        <img src="" alt="">
+                        Nombre Juego
+                    </label>
+                    <input type="name" name="name" placeholder="Pepito Pérez" maxlength="12">
+                </div>
+                <div class="form-group">
+                    <label for="">
+                        <img src="" alt="">
+                        Año
+                    </label>
+                    <input type="text" name="date" placeholder="24/06/1991">
+                </div>
+                <div class="form-group">
+                    <button type="submit">
+                        <img src="images/welcome/users/bg-btn-save.svg" alt="">
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <footer class="navigation">
+            <p>Admin</p>
+            <a href="game.html">
+                <img src="images/welcome/users/icon-back.svg" alt="" class="back">
+            </a>
+        </footer>
+    </main>
+</body>
+
+<!-- ANIMACION DEL MENÚ HAMBURGUESA -->
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //------------------------------------------
+        $('.border-mask').click(function (e) {
+            $('#photo').click()
+        })
+        $('#photo').change(function (e) {
+            e.preventDefault()
+            let reader = new FileReader()
+            reader.onload = function (evt) {
+                $('#upload').attr('src', event.target.result)
+            }
+            reader.readAsDataURL(this.files[0])
+        })
+    })
+</script>
+
+</html>
