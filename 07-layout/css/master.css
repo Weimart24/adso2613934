@@ -236,7 +236,10 @@ body {
             scrollbar-width: none;
             overflow-y: scroll;
             height: 600px;
-            -webkit-overflow-scrolling: touch;
+            
+        }
+        section::-webkit-scrollbar {
+            display: none;
         }
 
     }
@@ -580,6 +583,9 @@ main.view-game {
             overflow-y: scroll;
             -webkit-overflow-scrolling: touch;
             height: 400px;
+        }
+        section::-webkit-scrollbar {
+            display: none;
         }
     }
 
