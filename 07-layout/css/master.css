@@ -236,6 +236,7 @@ body {
             scrollbar-width: none;
             overflow-y: scroll;
             height: 600px;
+            -webkit-overflow-scrolling: touch;
         }
 
     }
@@ -577,6 +578,7 @@ main.view-game {
         section.scroll {
             scrollbar-width: none;
             overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
             height: 400px;
         }
     }
@@ -936,6 +938,7 @@ main.user {
 
         scrollbar-width: none;
         overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
 
 
         div.modules {
