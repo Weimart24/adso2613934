@@ -45,4 +45,105 @@
         </div>
     </form>
 </x-guest-layout> --}}
-Login
+
+@extends('layouts.app')
+@section('title', 'Gameapp - Login')
+@section('class', 'login catalogue')
+
+@section('content')
+    <header>
+        <img src="images/logo-welcome.svg" alt="logo" class="logo-top">
+
+        <aside class="filter">
+            <!-- boton de retroceder -->
+            <a href="catalogue.html" class="btn-back">
+                <img src="images/btn-back.svg" alt="Back">
+            </a>
+            <div class="img">
+                <img src="images/loginRegistre/icon-login.svg" alt="">
+            </div>
+
+            <!-- icono del menú hamburguesa -->
+            <svg class="btn-burger" viewBox="0 0 100 100" width="75">
+                <path class="line top"
+                    d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                <path class="line middle" d="m 70,50 h -40" />
+                <path class="line bottom"
+                    d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+            </svg>
+        </aside>
+    </header>
+
+    @include('layouts.menuBurger')
+
+    <section class="scroll higth-login">
+        <!-- RESTO DEL CONTENIDO -->
+        <form action={{ route('login') }} method="post">
+            @csrf
+            @if (count($errors->all()) > 0)
+                @foreach ($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
+            @endif
+            <!-- Label del id -->
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Email
+                </label>
+                <input type="email" name="email" placeholder="hola@hola.com" maxlength="30">
+            </div>
+
+            <!-- Label de la contraseña -->
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Contraseña
+                </label>
+                <img class="ico-eye" src="images/loginRegistre/icon-eye.svg" alt="Eyes">
+                <input type="password" name="password" placeholder="∗∗∗∗∗∗∗∗∗∗∗∗∗∗">
+            </div>
+            <div class="form-group">
+                <p class="accounts">Si no tienes una cuenta <a href="register.html">registrese aquí</a></p>
+            </div>
+            <div class="form-group">
+                <button type="submit">
+                    <img src="images/loginRegistre/bg-input-login.svg" alt="">
+                </button>
+                <a href="">¿Olvidaste la contraseña?</a>
+            </div>
+        </form>
+    </section>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: true,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 2
+                    }
+                }
+            })
+            $('header').on('click', '.btn-burger', function() {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            })
+            //-------------------------------------------
+            $togglePass = false;
+            $('section').on('click', '.ico-eye', function() {
+                !$togglePass ? $(this).next().attr('type', 'text') :
+                    $(this).next().attr('type', 'password')
+
+                    !$togglePass ? $(this).attr('src', 'images/loginRegistre/icon-eye-close.svg') :
+                    $(this).attr('src', 'images/loginRegistre/icon-eye.svg')
+                $togglePass = !$togglePass
+            })
+        })
+    </script>
+@endsection
