@@ -29,7 +29,7 @@
                 <p class="info-text">
                     Lorem ipsum dolor, sit amet consectetur.
                 </p>
-                <a href="user.html">
+                <a href="{{ url('users') }}">
                     <img src="images/welcome/button-view.svg" alt="" class="view">
                 </a>
             </aside>
