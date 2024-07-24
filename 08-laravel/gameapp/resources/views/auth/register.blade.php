@@ -1,5 +1,4 @@
-{{-- <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+{{-- <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
@@ -48,8 +47,7 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
-    </form>
-</x-guest-layout> --}}
+    </form> --}}
 
 
 @extends('layouts.app')
@@ -86,28 +84,75 @@
 
     <section class="scroll higth-registre">
         <!-- RESTO DEL CONTENIDO -->
-        <form action="dashboard.html" method="get">
+        <form action={{ route('register') }} method="post" enctype="multipart/form-data">
+            @csrf
+            <ul>
+                @if (count($errors) > 0)
+                    @foreach ($errors->all() as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                @endif
+            </ul>
             <!-- Label del id -->
             <div class="form-group">
                 <img id="upload" class="mask" src="images/loginRegistre/bg-img-user.jpg" alt="Photo">
                 <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
                 <input id="photo" type="file" name="photo" accept="image/*">
             </div>
+            {{-- Documento --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Documento
+                </label>
+                <input type="text" name="document" placeholder="123456789" maxlength="12">
+            </div>
+            {{-- Nombre --}}
             <div class="form-group">
                 <label for="">
                     <img src="" alt="">
                     Nombre Completo
                 </label>
-                <input type="name" name="name" placeholder="Pepito Pérez" maxlength="12">
+                <input type="text" name="fullname" placeholder="Pepito Pérez" maxlength="12">
             </div>
+            {{-- Género --}}
             <div class="form-group">
                 <label for="">
                     <img src="" alt="">
-                    Id
+                    Género
                 </label>
-                <input type="id" name="id" placeholder="123456789" maxlength="12">
+                <select type="" name="gender">
+                    <option value="">Seleccione Género</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otro">Otro</option>
+                </select>
             </div>
-            <!-- Label de la contraseña -->
+            {{-- Cumpleaños --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Cumpleaños
+                </label>
+                <input type="date" name="birthdate" placeholder="123456789" maxlength="12">
+            </div>
+            {{-- Teléfono --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Teléfono
+                </label>
+                <input type="text" name="phone" placeholder="3000000000" maxlength="12">
+            </div>
+            {{-- Correo Electrónico --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Correo Electrónico
+                </label>
+                <input type="email" name="email" placeholder="juanitoperez@gmail.com" maxlength="">
+            </div>
+            <!-- Contraseña -->
             <div class="form-group">
                 <label for="">
                     <img src="" alt="">
@@ -115,6 +160,14 @@
                 </label>
                 <img class="ico-eye" src="images/loginRegistre/icon-eye.svg" alt="Eyes">
                 <input type="password" name="password" placeholder="∗∗∗∗∗∗∗∗∗∗∗∗∗∗">
+            </div>
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Verficar Contraseña
+                </label>
+                <img class="ico-eye" src="images/loginRegistre/icon-eye.svg" alt="Eyes">
+                <input type="password" name="password_confirmation" placeholder="∗∗∗∗∗∗∗∗∗∗∗∗∗∗">
             </div>
             <div class="form-group">
                 <button type="submit">

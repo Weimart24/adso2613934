@@ -6,12 +6,12 @@
     <header>
         <div class="title-name">
             <img class="title-content" src="images/welcome/content-welcome.svg" alt="">
-            <h2>Juan Pérez</h2>
+            <h2>{{ $user->fullname }}</h2>
         </div>
 
         <div class="img-profile">
-            <a href="edit-admin.html">
-                <img class="mask" src="images/loginRegistre/bg-upload-photo.png" alt="Photo">
+            <a href={{ url("/profile") }}>
+                <img class="mask" src="{{asset('storage/images/userProfile/'.$user->photo)}}" alt="Photo">
                 <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
             </a>
         </div>

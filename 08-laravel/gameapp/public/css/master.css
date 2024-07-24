@@ -848,12 +848,13 @@ main.dashboard {
 
             h2 {
                 position: absolute;
-                top: 75px;
-                left: 84px;
-                font-family: var(--ff-body);
-                font-size: 30px;
-                font-weight: 100;
-                color: #272727;
+                top: 80px;
+                left: 50px;
+                font-family: var(--ff-heading);
+                font-size: 25px;
+                font-weight: 500;
+                color: var(--color-tertiary);
+                width: 250px;
             }
         }
     }
@@ -1031,6 +1032,63 @@ main.user-edit {
         display: flex;
         justify-content: center;
         margin-bottom: -50px;
+    }
+
+    section.profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        div.form-group {
+            display: flex;
+            flex-wrap: wrap;
+            /*prmanecer en la misma linea*/
+            position: relative;
+            gap: .6rem;
+            flex-direction: column;
+            width: 312px;
+
+            label {
+                display: flex;
+                color: var(--color-letter);
+                font-family: var(--ff-heading);
+                align-items: center;
+                gap: .6rem;
+                font-size: 25px;
+                font-weight: 600;
+            }
+            span {
+                color: var(--color-tertiary);
+                font-family: var(--ff-body);
+                align-items: center;
+                font-size: 20px;
+               
+            }
+
+            img.mask {
+                mask-image: url(../images/loginRegistre/mask-profile.svg);
+                mask-repeat: no-repeat;
+                mask-position: center top;
+                object-fit: cover;
+                align-self: center;
+                height: 170px;
+                width: 170px;
+            }
+
+            img.border-mask {
+                position: absolute;
+                left: 92px;
+            }
+
+            .border-mask {
+                cursor: pointer;
+            }
+
+            #photo {
+                display: none;
+            }
+        }
     }
 }
 

@@ -21,6 +21,12 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function show()
+    {
+        $user = auth()->user();
+        return view('profile')->with('user', $user);
+    }
+
     /**
      * Update the user's profile information.
      */
