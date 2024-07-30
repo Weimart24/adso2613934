@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Game;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,8 +14,16 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $users = User::all();
+        $games = Game::all();
+        $categories = Category::all();
         $user = auth()->user();
-        return view('dashboard', compact('user'));
+        return view('dashboard')->with([
+            'users' => $users,
+            'games' => $games,
+            'categories' => $categories,
+            'user' => $user
+        ]);
     }
 
     /**

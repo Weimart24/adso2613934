@@ -10,9 +10,14 @@
         </div>
 
         <div class="img-profile">
-            <a href={{ url("/profile") }}>
-                <img class="mask" src="{{asset('storage/images/userProfile/'.$user->photo)}}" alt="Photo">
-                <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
+            <a href={{ url('/profile') }}>
+                @if ($user->photo == 'no-photo.png')
+                <img id="upload" class="mask" src="{{ asset('images/userProfile/' . $user->photo) }}" alt="Photo-Default">
+            @else
+                <img id="upload" class="mask" src="{{ asset('images/userProfile/' . $user->photo) }}" alt="Photo">
+            @endif
+                 <img class="border-mask" src="images/loginRegistre/border-mask.svg"
+                    alt="borde">
             </a>
         </div>
     </header>
@@ -22,7 +27,7 @@
         <div class="modules">
             <figure>
                 <img src="images/welcome/icon-module.svg" alt="">
-                <figcaption>20 users</figcaption>
+                <figcaption>{{ count($users) }} users</figcaption>
             </figure>
             <aside class="text">
                 <img src="images/welcome/module-user.svg" alt="" width="163px" height="38px">
@@ -37,7 +42,7 @@
         <div class="modules">
             <figure>
                 <img src="images/welcome/icon-game.svg" alt="">
-                <figcaption>15 games</figcaption>
+                <figcaption>{{ count($games) }} games</figcaption>
             </figure>
             <aside class="text">
                 <img src="images/welcome/module-game.svg" alt="" width="174px" height="38px">
@@ -52,7 +57,7 @@
         <div class="modules">
             <figure>
                 <img src="images/welcome/icon-category.svg" alt=""">
-                <figcaption>28 categories</figcaption>
+                <figcaption>{{ count($categories) }} categories</figcaption>
             </figure>
             <aside class=" text">
                 <img src="images/welcome/module-categories.svg" alt="" width="192px" height="38px">

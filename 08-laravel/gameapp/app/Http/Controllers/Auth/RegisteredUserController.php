@@ -30,14 +30,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if ($request->hasFile('photo')) {
-            // Almacena el archivo en el sistema de archivos y obtiene solo el nombre hash del archivo.
-            $photo = $request->file('photo')->getClientOriginalName();
-            // Almacena el archivo en la ubicación especificada.
-            $request->file('photo')->store('public/images/userProfile');
-        } else {
-            $photo = 'no-photo.png';
-        }
 
         $request->validate([
             'fullname' => ['required', 'string', 'max:255'],
@@ -46,9 +38,20 @@ class RegisteredUserController extends Controller
             'birthdate' => ['required', 'date'],
             'phone' => ['required', 'string', 'max:255'],
             'photo' => ['nullable', 'file'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        
+        if ($request->hasFile('photo')) {
+            // Almacena el archivo en el sistema de archivos y obtiene solo el nombre hash del archivo.
+            $photo = $request->file('photo');
+            $photoName = $request->file('photo')->getClientOriginalName();
+            // Almacena el archivo en la ubicación especificada.
+           $destinoPath = public_path('/images/userProfile');
+            $photo->move($destinoPath, $photoName);
+        } else {
+            $photoName = 'no-photo.jpg';
+        }
 
         $user = User::create([
             'fullname' => $request->fullname,
@@ -56,7 +59,7 @@ class RegisteredUserController extends Controller
             'gender' => $request->gender,
             'birthdate' => $request->birthdate,
             'phone' => $request->phone,
-            'photo' => $photo,
+            'photo' => $photoName,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

@@ -9,7 +9,11 @@
 
     <section class="profile">
         <div class="form-group">
-            <img id="upload" class="mask" src="{{asset('storage/images/userProfile/'.$user->photo)}}" alt="Photo">
+            @if ($user->photo == 'no-photo.png')
+                <img id="upload" class="mask" src="{{ asset('images/userProfile/' . $user->photo) }}" alt="Photo-Default">
+            @else
+                <img id="upload" class="mask" src="{{ asset('images/userProfile/' . $user->photo) }}" alt="Photo">
+            @endif
             <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
             <input id="photo" type="file" name="photo" accept="image/*">
         </div>

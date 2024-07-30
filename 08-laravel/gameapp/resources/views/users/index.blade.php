@@ -6,10 +6,9 @@
     <header>
         <div class="title-name">
             <img class="title-content" src="images/welcome/users/content-users.svg" alt="">
-            <a href="{{ url('user/create') }}" class="add-icon">
+            <a href="{{ url('users/create') }}" class="add-icon">
                 <img src="images/welcome/users/icon-add.svg" alt="">
             </a>
-            <h2>Juan Pérez</h2>
         </div>
 
         <div class="img-profile">
@@ -24,7 +23,7 @@
             <div class="modules">
                 <div class="individual-module">
                     <figure>
-                        <img class="mask" src="images/welcome/users/bg-user-1.avif" alt="Photo">
+                        <img class="mask" src={{ asset('images/userProfile/'. $user->photo) }} alt="Photo">
                         <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
                     </figure>
                     <aside class="info">

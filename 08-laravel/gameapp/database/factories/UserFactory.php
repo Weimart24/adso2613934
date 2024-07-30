@@ -35,7 +35,7 @@ class UserFactory extends Factory
             'gender' => $genero,
             'fullname' => $name,
             'birthdate' => fake()->dateTimeBetween('1974-01-01', '2024-12-31'), 
-            'photo' => fake()->image($dir = './public/images', $width = 64, $height = 48),
+            'photo' => fake()->image(public_path('images/userProfile'), 140, 140, 'people', false),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
