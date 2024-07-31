@@ -22,15 +22,26 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'fullname' => ['required', 'string', 'max:255'],
-            'document' => ['required', 'string', 'unique:' . User::class],
-            'gender' => ['required', 'string', 'max:255'],
-            'birthdate' => ['required', 'date'],
-            'phone' => ['required', 'string', 'max:255'],
-            'photo' => ['nullable', 'file'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed'],
-        ];
+        if ($this->method() == 'PUT') {
+            return [
+                'fullname' => ['required', 'string', 'max:255'],
+                'document' => ['required', 'string', 'unique:' . User::class . ',document,' . $this->id],
+                'gender' => ['required', 'string', 'max:255'],
+                'birthdate' => ['required', 'date'],
+                'phone' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class . ',email,' . $this->id],
+            ];
+        } else {
+            return [
+                'fullname' => ['required', 'string', 'max:255'],
+                'document' => ['required', 'string', 'unique:' . User::class],
+                'gender' => ['required', 'string', 'max:255'],
+                'birthdate' => ['required', 'date'],
+                'phone' => ['required', 'string', 'max:255'],
+                'photo' => ['nullable', 'file'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+                'password' => ['required', 'confirmed'],
+            ];
+        }
     }
 }

@@ -15,6 +15,7 @@ class UserController extends Controller
     public function index()
     {
         //$users = User::all();
+        //$userP = auth()->user();
         $users = User::paginate(20);
         return view('users.index')->with('users', $users);
     }
@@ -71,7 +72,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        //dd($user)->toArray();
+        return view('show')->with('user', $user);
     }
 
     /**
@@ -79,15 +81,37 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit')->with('user', $user);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        if($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photoName = $request->file('photo')->getClientOriginalName();
+            $destinoPath = public_path('/images/userProfile');
+            $photo->move($destinoPath, $photoName);
+        } else {
+            $photoName = $request->originPhoto;
+        }
+
+        $user->document     = $request->document;
+        $user->fullname     = $request->fullname;
+        $user->gender       = $request->gender;
+        $user->birthdate    = $request->birthdate;
+        $user->photo        = $photoName;
+        $user->phone        = $request->phone;
+        $user->email        = $request->email;
+
+        if($user->save()) {
+            return redirect('users')
+                ->with('message', 'El usuario ' . $user->fullname . ' ha sido editado con éxito');
+        } else {
+            return redirect('users')->with('message', 'Ocurrió un error al intentar editar el usuario');
+        }
     }
 
     /**
@@ -95,6 +119,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if($user->delete()) {
+            return redirect('users')
+                ->with('message', 'El usuario ' . $user->fullname . ' ha sido eliminado con éxito');
+        } else {
+            return redirect('users')->with('message', 'Ocurrió un error al intentar eliminar el usuario');
+        }
     }
 }
