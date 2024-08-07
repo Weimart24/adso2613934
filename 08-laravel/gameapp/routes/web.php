@@ -67,4 +67,10 @@ Route::middleware('auth')->group(function () {
     ]);
 });
 
+Route::post('users/search', [UserController::class,'search']);
+
+//Exports
+Route::get('export/users/pdf', [UserController::class, 'pdf']);
+Route::get('export/users/excel', [UserController::class, 'excel']);
+
 require __DIR__ . '/auth.php';

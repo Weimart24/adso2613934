@@ -12,37 +12,40 @@
         </div>
 
         <div class="img-profile">
-            <img class="mask" src={{ asset('images/userProfile/') }} alt="Photo">
-            <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
+            <img class="mask" src={{asset( 'images/userProfile/' . Auth::user()->photo) }} alt="Photo">
+            <img class="border-mask" src={{ asset('images/loginRegistre/border-mask.svg') }} alt="borde">
         </div>
     </header>
 
-
-    <section class="content-profile">
-        @foreach ($users as $user)
-            <div class="modules">
-                <div class="individual-module">
-                    <figure>
-                        <a href="{{ url('users/' . $user->id) }}">
-                            <img class="mask" src={{ asset('images/userProfile/' . $user->photo) }} alt="Photo">
-                            <img class="border-mask" src="images/loginRegistre/border-mask.svg" alt="borde">
-                        </a>
-                    </figure>
-                    <aside class="info">
-                        <div class="titulos">
-                            <p>ID:</p>
-                            <p>NOMBRE:</p>
-                            <p>CUMPLEAÑOS:</p>
-                        </div>
-                        <div class="contenido">
-                            <p>{{ $user->id }}</p>
-                            <p>{{ $user->fullname }}</p>
-                            <p>{{ $user->birthdate }}</p>
-                        </div>
-                    </aside>
-                </div>
-                <div class="info">
-                    {{-- <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
+    <input type="text" placeholder="Search" id="qsearch" maxlength="15">
+    <a href={{ url('export/users/pdf') }}>PDF</a>
+    <a href={{ url('export/users/excel') }}>EXCEL</a>
+    
+        <section class="content-profile">
+            @foreach ($users as $user)
+                <div class="modules">
+                    <div class="individual-module">
+                        <figure>
+                            <a href="{{ url('users/' . $user->id) }}">
+                                <img class="mask" src={{ asset('images/userProfile/' . $user->photo) }} alt="Photo">
+                                <img class="border-mask" src={{ asset('images/loginRegistre/border-mask.svg') }} alt="borde">
+                            </a>
+                        </figure>
+                        <aside class="info">
+                            <div class="titulos">
+                                <p>ID:</p>
+                                <p>NOMBRE:</p>
+                                <p>CUMPLEAÑOS:</p>
+                            </div>
+                            <div class="contenido">
+                                <p>{{ $user->id }}</p>
+                                <p>{{ $user->fullname }}</p>
+                                <p>{{ $user->birthdate }}</p>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="info">
+                        {{-- <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
                         <img src={{ asset('images/welcome/users/icon-delete.svg') }} alt="delete" class="delete">
                     </a>
                     <form action={{ url('users/' . $user->id) }} method="post" style="display: none">
@@ -50,22 +53,22 @@
                         @method('delete')
                     </form>
                     --}}
-                    <a href="{{ url('users/' . $user->id . '/edit') }}">
-                        <img src="images/welcome/users/icon-edit.svg" alt="" class="edit">
-                    </a>
-                    <!--ORGANIZAR EL FORMULARIO PARA QUE SE VEA BONITO-->
-                    <form action="{{ url('users/' . $user->id) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <a href="">
-                            <img src={{ asset('images/welcome/users/icon-delete.svg') }} alt="delete" class="delete">
+                        <a href="{{ url('users/' . $user->id . '/edit') }}">
+                            <img src="images/welcome/users/icon-edit.svg" alt="" class="edit">
                         </a>
-                    </form>
+                        <!--ORGANIZAR EL FORMULARIO PARA QUE SE VEA BONITO-->
+                        <form action="{{ url('users/' . $user->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <a href="">
+                                <img src={{ asset('images/welcome/users/icon-delete.svg') }} alt="delete" class="delete">
+                            </a>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        @endforeach
-        {{ $users->links('layouts.paginator') }}
-    </section>
+            @endforeach
+            {{ $users->links('layouts.paginator') }}
+        </section>
     <footer class="navigation">
         <p>Admin</p>
         <a href="{{ url('dashboard') }}">
@@ -77,21 +80,39 @@
 
 @section('js')
     <script>
-        $('div').on('click', '.delete', function() {
-            $fullname = $(this).attr('data-fullname')
-            Swal.fire({
-                title: "¿Eliminar?",
-                text: "Esta seguro de eliminar a " + $fullname,
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $(this.next()).submit()
-                }
-            });
-        })
+        // $('div').on('click', '.delete', function() {
+        //     $fullname = $(this).attr('data-fullname')
+        //     Swal.fire({
+        //         title: "¿Eliminar?",
+        //         text: "Esta seguro de eliminar a " + $fullname,
+        //         icon: "warning",
+        //         showCancelButton: true,
+        //         confirmButtonColor: "#3085d6",
+        //         cancelButtonColor: "#d33",
+        //         confirmButtonText: "Yes, delete it!"
+        //     }).then((result) => {
+        //         if (result.isConfirmed) {
+        //             $(this.next()).submit()
+        //         }
+        //     });
+        // })
+
+        //Script de la busqueda Search
+        $('#qsearch').on('keyup', function(e) {
+            e.preventDefault();
+            $query = $(this).val();
+            $token = $('input[name=_token]').val();
+            $model = 'users';
+
+            $.post($model + '/search', {
+                    q: $query,
+                    _token: $token
+                },
+                function(data) {
+                    $('.content-profile').html(data);
+                },
+            )
+
+        });
     </script>
 @endsection

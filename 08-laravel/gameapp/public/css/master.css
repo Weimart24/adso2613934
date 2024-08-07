@@ -947,7 +947,6 @@ main.user {
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
 
-
         div.modules {
             display: flex;
             gap: 0.8rem;
@@ -970,10 +969,13 @@ main.user {
                     justify-content: center;
                     width: 85px;
                     height: 125px;
+                    a {
+                        display: flex;
+                        align-items: center;
+                    }
 
                     img.mask {
-                        /* mask-image: url(../images/loginRegistre/mask-profile.svg);
-                    mask-repeat: no-repeat; */
+                        mask-repeat: no-repeat;
                         border-radius: 10px;
                         object-fit: cover;
                         align-self: center;
@@ -984,7 +986,7 @@ main.user {
                     img.border-mask {
                         position: absolute;
                         left: 5px;
-                        top: 12px;
+                       
                         width: 75px;
                         height: 101px;
                     }
@@ -1091,5 +1093,6 @@ main.user-edit {
         }
     }
 }
+
 
 /* lo haces muy bien, te felicito :3 */
