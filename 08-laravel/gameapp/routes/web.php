@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
     ]);
 });
 
-Route::post('users/search', [UserController::class,'search']);
+Route::post('/users/search', [UserController::class,'search']);
 
 //Exports
 Route::get('export/users/pdf', [UserController::class, 'pdf']);

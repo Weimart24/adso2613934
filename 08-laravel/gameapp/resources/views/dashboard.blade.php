@@ -72,7 +72,7 @@
     </section>
 
     <footer class="navigation">
-        <p>Admin</p>
+        <p>{{ Auth::user()->role }}</p>
         <a href="javascript:;" onclick="logit.submit();">
             <img src="images/welcome/btn-logout.svg" alt="" class="logout">
         </a>

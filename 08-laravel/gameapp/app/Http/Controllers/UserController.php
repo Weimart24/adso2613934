@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         //$users = User::all();
         //$userP = auth()->user();
-        $users = User::paginate(20);
+        $users = User::paginate(3);
         return view('users.index')->with('users', $users);
     }
 
@@ -131,7 +131,7 @@ class UserController extends Controller
 
     // Para el seach de busqueda
     public function search(Request $request) {
-        $users = User::names($request->q)->paginate(20);
+        $users = User::names($request->q)->paginate(3);
         return view('users.search')->with('users', $users);
     }
 

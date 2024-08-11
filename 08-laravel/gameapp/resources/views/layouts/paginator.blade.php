@@ -1,19 +1,20 @@
 @if ($paginator->hasPages())
-    <nav>
+    <nav class="navigate-paginate">
         <ul class="pagination">
-            {{-- Previous Page Link --}}
-            @if ($paginator->onFirstPage())
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.previous')</span></li>
-            @else
-                <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a></li>
-            @endif
-
-            {{-- Next Page Link --}}
-            @if ($paginator->hasMorePages())
-                <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a></li>
-            @else
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.next')</span></li>
-            @endif
+            <li>
+                <a href="{{ $paginator->previousPageUrl() }}" rel="prev">
+                    <img src={{ asset('images/btn-prev.svg') }} alt="Preview">
+                </a>
+            </li>
+            {{-- Current Page Indicator --}}
+            <li class="disabled" aria-disabled="true">
+                <span>{{ sprintf('%02d/%02d', $paginator->currentPage(), $paginator->lastPage()) }}</span>
+            </li>
+            <li class="disabled" aria-disabled="true">
+                <a href="{{ $paginator->nextPageUrl() }}">
+                    <img src={{ asset('images/btn-next.svg') }} alt="Next">
+                </a>
+            </li>
         </ul>
     </nav>
 @endif
