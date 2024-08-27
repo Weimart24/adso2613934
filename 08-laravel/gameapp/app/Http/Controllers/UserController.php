@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         //$users = User::all();
         //$userP = auth()->user();
-        $users = User::paginate(3);
+        $users = User::paginate(4);
         return view('users.index')->with('users', $users);
     }
 
@@ -35,8 +35,6 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        // dd($request->all());
-
         //Upload file
         if ($request->hasFile('photo')) {
             // Almacena el archivo en el sistema de archivos y obtiene solo el nombre hash del archivo.
@@ -75,7 +73,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         //dd($user)->toArray();
-        return view('show')->with('user', $user);
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -131,7 +129,7 @@ class UserController extends Controller
 
     // Para el seach de busqueda
     public function search(Request $request) {
-        $users = User::names($request->q)->paginate(3);
+        $users = User::names($request->q)->paginate(4);
         return view('users.search')->with('users', $users);
     }
 

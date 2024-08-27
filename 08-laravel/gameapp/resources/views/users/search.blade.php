@@ -34,8 +34,6 @@
             </form>
         </div>
     </div>
-@empty
+    @empty
     <p>No users found.</p>
 @endforelse
-
-{{ $users->links('layouts.paginator') }}

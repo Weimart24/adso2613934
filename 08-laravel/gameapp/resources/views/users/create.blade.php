@@ -60,7 +60,7 @@
                     <img src="" alt="">
                     Cumpleaños
                 </label>
-                <input type="date" name="birthdate" value="{{ old('birthdate') }}" placeholder="123456789" maxlength="12">
+                <input class="date" type="date" name="birthdate" value="{{ old('birthdate') }}" placeholder="123456789" maxlength="12">
             </div>
             {{-- Teléfono --}}
             <div class="form-group">

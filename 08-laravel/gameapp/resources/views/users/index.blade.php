@@ -22,6 +22,15 @@
     </header>
 
     <section class="content-profile">
+        {{-- <div class="loading-container">
+            <span class="loading">L</span>
+            <span class="loading">O</span>
+            <span class="loading">A</span>
+            <span class="loading">D</span>
+            <span class="loading">I</span>
+            <span class="loading">N</span>
+            <span class="loading">G</span>
+        </div> --}}
         @foreach ($users as $user)
             <div class="modules">
                 <div class="individual-module">
@@ -59,6 +68,7 @@
                 </div>
             </div>
         @endforeach
+        
     </section>
     {{ $users->links('layouts.paginator') }}
     <footer class="navigation">

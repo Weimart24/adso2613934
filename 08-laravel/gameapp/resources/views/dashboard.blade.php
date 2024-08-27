@@ -34,7 +34,7 @@
                 <p class="info-text">
                     Lorem ipsum dolor, sit amet consectetur.
                 </p>
-                <a href="{{ url('users') }}">
+                <a href={{ url('users') }}>
                     <img src="images/welcome/button-view.svg" alt="" class="view">
                 </a>
             </aside>
@@ -49,7 +49,7 @@
                 <p class="info-text">
                     Lorem ipsum dolor, sit amet consectetur.
                 </p>
-                <a href="game.html">
+                <a href={{ url('games') }}>
                     <img src="images/welcome/button-view.svg" alt="" class="view">
                 </a>
             </aside>
@@ -64,7 +64,7 @@
                 <p class="info-text">
                     Lorem ipsum dolor, sit amet consectetur.
                 </p>
-                <a href="category.html">
+                <a href={{ url('categories') }}>
                     <img src="images/welcome/button-view.svg" alt="" class="view">
                 </a>
             </aside>

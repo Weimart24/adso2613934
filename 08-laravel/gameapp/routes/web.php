@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,16 +59,19 @@ Route::get('/games/', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+//Capa de segurirdad
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show']);
     //Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     //Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resources([
-        'users' => UserController::class
+        'users' => UserController::class,
+        'categories' => CategoryController::class
     ]);
 });
 
-Route::post('/users/search', [UserController::class,'search']);
+Route::post('/users/search', [UserController::class,'search']); //Para el search de busqueda de Users
+Route::post('/categories/search', [CategoryController::class,'search']); //Para el search de busqueda de Categories
 
 //Exports
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
