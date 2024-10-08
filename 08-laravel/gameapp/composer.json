@@ -54,6 +54,9 @@
         ],
         "rutas": [
             "php artisan route:list"
+        ],
+        "seed": [
+            "php artisan db:seed"
         ]
     },
     "extra": {

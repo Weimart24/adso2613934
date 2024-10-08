@@ -1,18 +1,17 @@
 @extends('layouts.app')
-@section('title', 'Gameapp - Edit-User')
+@section('title', 'Gameapp - Add-Game')
 @section('class', 'dashboard registre user-edit')
 
 @section('content')
 
     <header>
-        <img class="title-content" src={{ asset('images/welcome/users/edit-category.svg') }} alt="">
+        <img class="title-content" src={{ asset('images/welcome/users/add-game.svg') }} alt="">
     </header>
 
     <section class="scroll higth-registre">
         <!-- RESTO DEL CONTENIDO -->
-        <form action={{ url ('categories/' . $category->id) }} method="post" enctype="multipart/form-data">
+        <form action={{ route('games.store') }} method="post" enctype="multipart/form-data">
             @csrf
-            @method('PUT') {{--en html no existe el metodo PUT --}}
             <ul>
                 @if (count($errors) > 0)
                     @foreach ($errors->all() as $message)
@@ -22,45 +21,84 @@
             </ul>
             <!-- Label del id -->
             <div class="form-group">
-                <img id="upload" class="mask" src={{ asset('images/imageCategory/' . $category->image) }} alt="Photo">
+                <img id="upload" class="mask" src={{ asset('images/welcome/users/add-icon.svg') }} alt="Photo">
                     <img class="border-mask" src={{ asset('images/loginRegistre/border-mask.svg') }} alt="borde">
-                <input id="photo" type="file" name="photo" value="{{ old('photo') }}" accept="image/*">
-                <input type="hidden" name="originPhoto" value={{ $category->image }}>
-                <input type="hidden" name="id" value={{ $category->id }}>
+                <input id="photo" type="file" name="image" value="{{ old('image') }}" accept="image/*">
             </div>
-            {{-- Nombre --}}
+            {{-- Nombre del Juego --}}
             <div class="form-group">
                 <label for="">
                     <img src="" alt="">
-                    Nombre
+                    Nombre del Juego
                 </label>
-                <input type="text" name="name" value="{{ old('name', $category->name) }}" placeholder="Xbox" maxlength="12">
+                <input type="text" name="title" value="{{ old('title') }}" placeholder="ej: Halo" maxlength="12">
             </div>
-            {{-- Empresa --}}
+            {{-- Desarrollador del Juego --}}
             <div class="form-group">
                 <label for="">
                     <img src="" alt="">
-                    Empresa
+                    Desarrollador
                 </label>
-                <input type="text" name="manufacturer" placeholder="Microsoft" value="{{ old('manufacturer', $category->manufacturer) }}" maxlength="12">
+                <input type="text" name="developer" value="{{ old('developer') }}" placeholder="ej: Microsoft" maxlength="12">
             </div>
-            {{-- Fecha de creación --}}
+            {{-- Categoría --}}
             <div class="form-group">
                 <label for="">
                     <img src="" alt="">
-                    Fecha de Creación
+                    Categoría
                 </label>
-                <input type="date" name="releasedate" value="{{ old('releasedate', $category->releasedate) }}" placeholder="123456789" maxlength="12">
+                <select type="" name="category_id" value="{{ old('category_id') }}">
+                    <option value="">Seleccione Categoría</option>
+                    @foreach($cats as $cat)
+                        <option value="{{ $cat->id }}" @if(old('category_id') == $cat->id) selected @endif> {{ $cat->name }} </option>
+                    @endforeach
+                </select>
             </div>
-            
-            {{-- Descripción --}}
+            {{-- Año de creación --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Año de Creación
+                </label>
+                <input class="date" type="date" name="releasedate" value="{{ old('releasedate') }}" placeholder="123456789" maxlength="12">
+            </div>
+            {{-- Precio del Videojuego --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Precio
+                </label>
+                <input type="text" name="price" placeholder="$99.99" value="{{ old('price') }}" maxlength="12">
+            </div>
+            {{-- Genero --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Genero
+                </label>
+                <input type="text" name="genre" placeholder="Action" value="{{ old('genre') }}"maxlength="">
+            </div>
+            {{-- Slader --}}
+            <div class="form-group">
+                <label for="">
+                    <img src="" alt="">
+                    Slader
+                </label>
+                <select type="" name="slider" value="{{ old('slider') }}">
+                    <option value="">Seleccione Slader</option>
+                    <option value="1" @if(old('slader') == 1 ) selected @endif>Activo</option>
+                    <option value="0" @if(old('slader') == 0 ) selected @endif>Inactivo</option>
+                </select>
+            </div>
+            <!-- Descripción -->
             <div class="form-group">
                 <label for="">
                     <img src="" alt="">
                     Descripción
                 </label>
-                <textarea class="textarea" name="description" placeholder="juanitoperez@gmail.com"  maxlength="">{{ old('description', $category->description) }}</textarea>
+                <textarea class="textarea" name="description" placeholder="Lorem ipsum" value=""maxlength="">{{ old('description') }}</textarea>
             </div>
+
             <div class="form-group">
                 <button type="submit">
                     <img src={{ asset('images/welcome/users/bg-btn-save.svg') }} alt="">
@@ -71,7 +109,7 @@
 
     <footer class="navigation">
         <p>Admin</p>
-        <a href={{ url('/categories') }}>
+        <a href={{ url('/games') }}>
             <img src={{ asset('images/welcome/users/icon-back.svg') }} alt="" class="back">
         </a>
     </footer>

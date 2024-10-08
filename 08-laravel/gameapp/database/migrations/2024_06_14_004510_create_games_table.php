@@ -27,7 +27,7 @@ return new class extends Migration
             ->on('users');
             $table->float('price');
             $table->string('genre');
-            $table->boolean('slader')->default(0);
+            $table->boolean('slider')->default(0);
             $table->text('description');
             $table->timestamps();
         });

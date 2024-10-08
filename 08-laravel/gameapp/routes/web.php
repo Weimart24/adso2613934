@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
@@ -64,14 +65,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show']);
     //Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     //Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::resources([
         'users' => UserController::class,
-        'categories' => CategoryController::class
+        'categories' => CategoryController::class,
+        'games' => GameController::class
     ]);
 });
-
+//Search
 Route::post('/users/search', [UserController::class,'search']); //Para el search de busqueda de Users
 Route::post('/categories/search', [CategoryController::class,'search']); //Para el search de busqueda de Categories
+Route::post('/games/search', [GameController::class,'search']); //Para el search de busqueda de Games
 
 //Exports
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
