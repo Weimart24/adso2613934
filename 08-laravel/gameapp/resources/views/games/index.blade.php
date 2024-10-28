@@ -113,7 +113,7 @@
                     },
                     function(data) {
                         $('.content-profile').html(data);
-                    }
+                    },
                 ).fail(function(xhr, status, error) {
                     console.error('Error:', error);
                 });

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class Game extends Model
-{
-    use HasFactory;
+{    use HasApiTokens, HasFactory, Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -39,5 +40,12 @@ class Game extends Model
     // Relationship : Game belongs to collection
     public function collection() {
         return $this->belongsTo('App\Models\Collection');
+    }
+
+    public function scopeNames($games, $q)
+    {
+        if (trim($q)) {
+            $games->where('title', 'LIKE', "%$q%");
+        }
     }
 }

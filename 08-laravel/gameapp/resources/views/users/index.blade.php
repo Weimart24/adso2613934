@@ -36,7 +36,7 @@
                 <div class="individual-module">
                     <figure>
                         <a href="{{ url('users/' . $user->id) }}">
-                            <img class="mask" src={{ asset('images/userProfile/' . $user->photo) }} alt="Photo">
+                            <img class="mask" src="{{ asset('images/userProfile/' . $user->photo) }}" alt="Photo">
                             <img class="border-mask" src={{ asset('images/loginRegistre/border-mask.svg') }} alt="borde">
                         </a>
                     </figure>

@@ -128,7 +128,7 @@ class UserController extends Controller
     }
 
     // Para el seach de busqueda
-    public function search(Request $request) {
+    public function search(Request $request) {        
         $users = User::names($request->q)->paginate(4);
         return view('users.search')->with('users', $users);
     }
