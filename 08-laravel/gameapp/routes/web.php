@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Game;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $sliders = Game::where('slider', 1)->get();
+    return view('welcome')->with('sliders', $sliders);
 });
 
 Route::get('/catalogue', function () {
@@ -77,8 +79,15 @@ Route::post('/users/search', [UserController::class,'search']); //Para el search
 Route::post('/categories/search', [CategoryController::class,'search']); //Para el search de busqueda de Categories
 Route::post('/games/search', [GameController::class,'search']); //Para el search de busqueda de Games
 
+
 //Exports
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
+
+Route::get('export/games/pdf', [GameController::class, 'pdf']);
+Route::get('export/games/excel', [GameController::class, 'excel']);
+
+//Import
+Route::post('import/users', [UserController::class, 'import']);
 
 require __DIR__ . '/auth.php';

@@ -12,20 +12,26 @@
     <table>
         <tr>
             <th> ID </th>
-            <th> Fullname </th>
-            <th> Email </th>
-            <th> Phone </th>
-            <th> Role </th>
-            <th> Photo </th>
+            <th> Title </th>
+            <th> Developer </th>
+            <th> Releasedate </th>
+            <th> Price </th>
+            <th> Genre </th>
+            <th> Slider </th>
+            <th> Description </th>
+            <th> Image </th>
         </tr>
-        @foreach ($users as $user)
+        @foreach ($games as $game)
             <tr>
-                <td> {{ $user->id }} </td>
-                <td> {{ $user->fullname }} </td>
-                <td> {{ $user->email }} </td>
-                <td> {{ $user->phone }} </td>
-                <td> {{ $user->role }} </td>
-                <td> <img src={{ public_path() . ('/images/userProfile/' . $user->photo) }} width="40px"></td>
+                <td> {{ $game->id }} </td>
+                <td> {{ $game->title }} </td>
+                <td> {{ $game->developer }} </td>
+                <td> {{ $game->releasedate }} </td>
+                <td> {{ $game->price }} </td>
+                <td> {{ $game->genre }} </td>
+                <td> {{ $game->slider }} </td>
+                <td> {{ $game->description }} </td>
+                <td> <img src={{ public_path() . ('/images/gameImage/' . $game->image) }} width="50px"></td>
             </tr>
         @endforeach
     </table>

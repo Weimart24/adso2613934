@@ -8,9 +8,9 @@
             <img class="title-content" src="images/welcome/users/content-games.svg" alt="">
             <a href={{ url('games/create') }} class="add-icon">
             </a>
-            <a href={{ url('export/users/pdf') }} class="pdf-icon" >
+            <a href={{ url('export/games/pdf') }} class="pdf-icon" >
             </a>
-            <a href={{ url('export/users/excel') }} class="excel-icon" >
+            <a href={{ url('export/games/excel') }} class="excel-icon" >
             </a>
             <input type="text" placeholder="Search" name="qsearch" class="qsearch" maxlength="15">
         </div>

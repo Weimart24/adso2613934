@@ -7,6 +7,8 @@ use illuminate\Support\Facades\Auth;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\GameRequest;
+use PDF;
+use App\Exports\GameExport;
 
 class GameController extends Controller
 {
@@ -135,5 +137,14 @@ class GameController extends Controller
     {
         $games = Game::names($request->q)->paginate(4);
         return view('games.search')->with('games', $games);
+    }
+    // Exportar a excel y pdf
+    public function pdf() {
+        $games = Game::all();
+        $pdf = PDF::loadView('games.pdf', compact('games'));
+        return $pdf->download('allgames.pdf');
+    }
+    public function excel() {
+        return \Excel::download(new GameExport, 'games.xlsx');
     }
 }

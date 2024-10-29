@@ -12,6 +12,12 @@
             </a>
             <a href={{ url('export/users/excel') }} class="excel-icon" >
             </a>
+            <form action="{{ url('import/users') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" id="file" class="hidden" accept="aplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                <button type="submit" class="btn-import">
+                    
+                </button>
             <input type="text" placeholder="Search" name="qsearch" class="qsearch" maxlength="15">
         </div>
 

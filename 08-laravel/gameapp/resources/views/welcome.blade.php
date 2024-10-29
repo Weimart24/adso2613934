@@ -4,18 +4,18 @@
 
 @section('content')
     <header>
-        <img src="{{asset('images/logo-welcome.svg')}}" alt="Logo">
+        <img src="{{ asset('images/logo-welcome.svg') }}" alt="Logo">
     </header>
 
     <section class="slider owl-carousel owl-theme">
-        <img src="{{ asset('images/slide01.png')}}" alt="Log contenido">
-        <img src="{{ asset('images/slide02.png')}}" alt="Log contenido">
-        <img src="{{ asset('images/slide03.png')}}" alt="Log contenido">
+        @foreach ($sliders as $slider)
+            <img src="{{ asset('images/gameImage/' . $slider->image) }}" alt="Log contenido">
+        @endforeach
     </section>
 
     <footer>
         <a href="{{ url('catalogue') }}">
-            <img src="{{ asset('images/content-btn-welcome.svg')}}" alt="Letra boton Inicio">
+            <img src="{{ asset('images/content-btn-welcome.svg') }}" alt="Letra boton Inicio">
         </a>
     </footer>
 @endsection
